@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: black;
+  color: white;
+}
+
+/* Custom Gold Glow for the Vault */
+.vault-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
