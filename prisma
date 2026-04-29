@@ -1,0 +1,26 @@
+// This tracks your 80M NGN and every single "Smile" sent
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Vault {
+  id        Int      @id @default(1)
+  balance   Float    @default(80000000) // Initial 80 Million
+  updatedAt DateTime @updatedAt
+}
+
+model Ledger {
+  id              String   @id @default(cuid())
+  recipientName   String
+  accountNumber   String
+  bankName        String
+  amount          Float
+  status          String   @default("PENDING") // PENDING, SUCCESS, FAILED
+  reference       String   @unique // Flutterwave TX Ref
+  createdAt       DateTime @default(now())
+}
